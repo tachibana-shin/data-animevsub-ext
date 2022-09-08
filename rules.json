@@ -1,9 +1,9 @@
-[
-  {
-    "transform": {
-      "scheme": "https",
-      "host": "animevietsub.cc"
-    },
+{
+  "transform": {
+    "scheme": "https",
+    "host": "animevietsub.cc"
+  },
+  "rules": [{
     "condition": {
       "urlFilter": "||www.google.com.vn/*",
       "resourceTypes": [
@@ -19,5 +19,5 @@
     },
     "id": 1,
     "priority": 1
-  }
-]
+  }]
+}
