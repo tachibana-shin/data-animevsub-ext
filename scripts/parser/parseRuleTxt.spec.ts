@@ -1,5 +1,5 @@
-import { describe, test, expect } from "vitest";
-import { parseRuleTxt } from "./parseRuleTxt";
+import { describe, test, expect } from "vitest"
+import { parseRuleTxt } from "./parseRuleTxt"
 
 describe("parseRuleTxt", () => {
   test("no type", () => {
@@ -15,13 +15,13 @@ describe("parseRuleTxt", () => {
             "image",
             "object",
             "xmlhttprequest",
-            "other",
-          ],
+            "other"
+          ]
         },
-        priority: 1,
-      },
-    ]);
-  });
+        priority: 1
+      }
+    ])
+  })
   test("type all", () => {
     expect(parseRuleTxt(`||www.google.com/*^$all`)).toEqual([
       {
@@ -35,25 +35,25 @@ describe("parseRuleTxt", () => {
             "image",
             "object",
             "xmlhttprequest",
-            "other",
-          ],
+            "other"
+          ]
         },
-        priority: 1,
-      },
-    ]);
-  });
+        priority: 1
+      }
+    ])
+  })
   test("type scoop", () => {
     expect(parseRuleTxt(`||www.google.com/*^$script,stylesheet`)).toEqual([
       {
         condition: {
           urlFilter: "||www.google.com/*",
-          resourceTypes: ["script", "stylesheet"],
+          resourceTypes: ["script", "stylesheet"]
         },
-        priority: 1,
-      },
-    ]);
-  });
+        priority: 1
+      }
+    ])
+  })
   test("type unknown", () => {
-    expect(() => parseRuleTxt(`||www.google.com/*^$script,unknown`)).toThrow();
-  });
-});
+    expect(() => parseRuleTxt(`||www.google.com/*^$script,unknown`)).toThrow()
+  })
+})

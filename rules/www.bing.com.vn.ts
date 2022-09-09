@@ -1,4 +1,4 @@
-import { defineRule } from "../scripts/defineRule";
+import { defineRule } from "../scripts/defineRule"
 
 export default defineRule({
   condition: {
@@ -11,9 +11,8 @@ export default defineRule({
       "image",
       "object",
       "xmlhttprequest",
-      "other",
-    ],
+      "other"
+    ]
   },
-  id: 2,
-  priority: 1,
-});
+  priority: 1
+})

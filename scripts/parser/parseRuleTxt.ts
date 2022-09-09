@@ -1,4 +1,3 @@
-
 import type { defineRule } from "../defineRule"
 
 const TypesAll: ReturnType<typeof defineRule>["condition"]["resourceTypes"] = [
@@ -22,8 +21,7 @@ export function parseRuleTxt(rules: string, filePath?: string) {
 
     if (line.startsWith("!") || line.startsWith("#")) return
 
-    if (line.startsWith("||*"))
-      line = line.slice(2)
+    if (line.startsWith("||*")) line = line.slice(2)
 
     if (line.startsWith("||")) {
       const [urlFilter, types = "all"] = line.split("^$", 2)
