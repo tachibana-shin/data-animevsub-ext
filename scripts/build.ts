@@ -13,7 +13,11 @@ const dist = resolve(__dirname, "..", "dist")
 
 build()
 
-async function buildRules() {
+async function buildRules(): Promise<
+  // eslint-disable-next-line no-undef
+  Omit<chrome.declarativeNetRequest.Rule, "action">[]
+  // eslint-disable-next-line indent
+> {
   const files = await globby(["*.ts", "*.txt"], {
     cwd: dirRules
   })
@@ -38,9 +42,7 @@ async function buildRules() {
     })
   )
 
-  rules.forEach((item, index) => Object.assign(item, { index: index + 1 }))
-
-  return rules
+  return rules.map((item, index) => Object.assign(item, { id: index + 1 }))
 }
 async function buildTransform(): Promise<{ scheme: string; host: string }> {
   const { scheme, host } = JSON.parse(
