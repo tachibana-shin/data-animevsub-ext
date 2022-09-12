@@ -1,1 +1,1 @@
-{"rules":[{"condition":{"urlFilter":"||www.bing.com.vn","resourceTypes":["stylesheet","script"]},"priority":1,"id":1}],"transform":{"scheme":"https","host":"animevietsub.cc"}}
+{"rules":[{"condition":{"urlFilter":"||animevietsub.tv","resourceTypes":["main_frame","sub_frame","stylesheet","script","image","object","xmlhttprequest","other"]},"priority":1,"id":1}],"transform":{"scheme":"https","host":"animevietsub.cc"}}
