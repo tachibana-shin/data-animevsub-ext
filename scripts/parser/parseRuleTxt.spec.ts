@@ -64,7 +64,7 @@ describe("parseRuleTxt", () => {
     expect(parseRuleTxt("*.www.google.com")).toEqual([
       {
         condition: {
-          regexFilter: "//((?:.+\\.)?)www\\.google\\.com($|/)",
+          regexFilter: "://((?:.+\\.)?)www\\.google\\.com($|/)",
           resourceTypes: [
             "main_frame",
             "sub_frame",
