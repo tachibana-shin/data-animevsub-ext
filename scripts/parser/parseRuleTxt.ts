@@ -58,7 +58,7 @@ export function parseRuleTxt(rules: string, filePath?: string) {
       } else {
         rulesJs.push({
           condition: {
-            regexFilter: `//((?:.+\\.)?)${urlFilter
+            regexFilter: `://((?:.+\\.)?)${urlFilter
               .slice(2)
               .replace(/\./g, "\\.")}($|/)`,
             resourceTypes: resourceTypes as typeof TypesAll
