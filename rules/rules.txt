@@ -1,1 +1,1 @@
-||animevietsub.tv^$all
+*.animevietsub.tv^$all

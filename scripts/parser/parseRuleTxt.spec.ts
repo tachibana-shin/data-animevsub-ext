@@ -21,22 +21,6 @@ describe("parseRuleTxt", () => {
           ]
         },
         priority: 1
-      },
-      {
-        condition: {
-          regexFilter: "^://(.+?)\\.www\\.google\\.com/",
-          resourceTypes: [
-            "main_frame",
-            "sub_frame",
-            "stylesheet",
-            "script",
-            "image",
-            "object",
-            "xmlhttprequest",
-            "other"
-          ]
-        },
-        priority: 1
       }
     ])
   })
@@ -46,22 +30,6 @@ describe("parseRuleTxt", () => {
       {
         condition: {
           urlFilter: "||www.google.com",
-          resourceTypes: [
-            "main_frame",
-            "sub_frame",
-            "stylesheet",
-            "script",
-            "image",
-            "object",
-            "xmlhttprequest",
-            "other"
-          ]
-        },
-        priority: 1
-      },
-      {
-        condition: {
-          regexFilter: "^://(.+?)\\.www\\.google\\.com/",
           resourceTypes: [
             "main_frame",
             "sub_frame",
@@ -85,17 +53,31 @@ describe("parseRuleTxt", () => {
           resourceTypes: ["script", "stylesheet"]
         },
         priority: 1
-      },
-      {
-        condition: {
-          regexFilter: "^://(.+?)\\.www\\.google\\.com/",
-          resourceTypes: ["script", "stylesheet"]
-        },
-        priority: 1
       }
     ])
   })
   test("type unknown", () => {
     expect(() => parseRuleTxt("||www.google.com/*^$script,unknown")).toThrow()
+  })
+
+  test("regmode", () => {
+    expect(parseRuleTxt("*.www.google.com")).toEqual([
+      {
+        condition: {
+          regexFilter: "//((?:.+\\.)?)www\\.google\\.com($|/)",
+          resourceTypes: [
+            "main_frame",
+            "sub_frame",
+            "stylesheet",
+            "script",
+            "image",
+            "object",
+            "xmlhttprequest",
+            "other"
+          ]
+        },
+        priority: 1
+      }
+    ])
   })
 })

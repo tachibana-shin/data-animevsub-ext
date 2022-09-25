@@ -62,21 +62,21 @@ async function buildTransform(): Promise<{ scheme: string; host: string }> {
   return { scheme, host }
 }
 async function buildRegexSubstitution(): Promise<string> {
-  const { scheme, host } = JSON.parse(
+  const { host } = JSON.parse(
     await fs.promises.readFile(
       path.resolve(__dirname, "..", "transform.json"),
       "utf8"
     )
   )
 
-  if (!scheme || !host) {
+  if (!host) {
     // eslint-disable-next-line functional/no-throw-statement
     throw new Error(
       "[Error]: File transform.json required 'scheme' and 'host'."
     )
   }
 
-  return `${scheme}://\\1.${host}/`
+  return `://\\1${host}\\2`
 }
 
 function log(color: "greenBright" | "magentaBright", message: string) {

@@ -1,5 +1,3 @@
-import escapeStringRegexp from "escape-string-regexp"
-
 import type { defineRule } from "../defineRule"
 
 const TypesAll: ReturnType<typeof defineRule>["condition"]["resourceTypes"] = [
@@ -25,7 +23,10 @@ export function parseRuleTxt(rules: string, filePath?: string) {
 
     if (line.startsWith("||*")) line = line.slice(2)
 
-    if (line.startsWith("||")) {
+    const regMode = line.startsWith("*.")
+    const lineMode = line.startsWith("||")
+
+    if (regMode || lineMode) {
       const [urlFilter, types = "all"] = line.split("^$", 2)
 
       const resourceTypes = types === "all" ? TypesAll : types.split(",")
@@ -46,20 +47,25 @@ export function parseRuleTxt(rules: string, filePath?: string) {
         })
       }
 
-      rulesJs.push({
-        condition: {
-          urlFilter,
-          resourceTypes: resourceTypes as typeof TypesAll
-        },
-        priority: 1
-      })
-      rulesJs.push({
-        condition: {
-          regexFilter: `^://(.+?)\\.${escapeStringRegexp(urlFilter.slice(2))}/`,
-          resourceTypes: resourceTypes as typeof TypesAll
-        },
-        priority: 1
-      })
+      if (lineMode) {
+        rulesJs.push({
+          condition: {
+            urlFilter,
+            resourceTypes: resourceTypes as typeof TypesAll
+          },
+          priority: 1
+        })
+      } else {
+        rulesJs.push({
+          condition: {
+            regexFilter: `//((?:.+\\.)?)${urlFilter
+              .slice(2)
+              .replace(/\./g, "\\.")}($|/)`,
+            resourceTypes: resourceTypes as typeof TypesAll
+          },
+          priority: 1
+        })
+      }
     }
   })
 
