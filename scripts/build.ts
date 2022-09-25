@@ -61,6 +61,23 @@ async function buildTransform(): Promise<{ scheme: string; host: string }> {
 
   return { scheme, host }
 }
+async function buildRegexSubstitution(): Promise<string> {
+  const { scheme, host } = JSON.parse(
+    await fs.promises.readFile(
+      path.resolve(__dirname, "..", "transform.json"),
+      "utf8"
+    )
+  )
+
+  if (!scheme || !host) {
+    // eslint-disable-next-line functional/no-throw-statement
+    throw new Error(
+      "[Error]: File transform.json required 'scheme' and 'host'."
+    )
+  }
+
+  return `${scheme}://\\1.${host}/`
+}
 
 function log(color: "greenBright" | "magentaBright", message: string) {
   console.log(
@@ -77,9 +94,10 @@ async function build() {
   console.log("\n")
 
   try {
-    const [rules, transform] = await Promise.all([
+    const [rules, transform, regexSubstitution] = await Promise.all([
       buildRules(),
-      buildTransform()
+      buildTransform(),
+      buildRegexSubstitution()
     ])
 
     log(
@@ -91,7 +109,7 @@ async function build() {
 
     await fs.emptyDir(dist)
 
-    const rulesJson = JSON.stringify({ rules, transform })
+    const rulesJson = JSON.stringify({ rules, transform, regexSubstitution })
 
     await fs.promises.writeFile(join(dist, "rules.json"), rulesJson)
 
