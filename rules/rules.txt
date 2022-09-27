@@ -1,1 +1,2 @@
 *.animevietsub.tv^$all
+*.animevsub.tv^$all
