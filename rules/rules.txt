@@ -1,2 +1,4 @@
 *.animevietsub.tv^$all
 *.animevsub.tv^$all
+*.animevietsub.cc^$all
+*.animevietsub.co^$all
