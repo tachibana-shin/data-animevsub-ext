@@ -2,3 +2,4 @@
 *.animevsub.tv^$all
 *.animevietsub.cc^$all
 *.animevietsub.co^$all
+*.animevietsub.to^$all
