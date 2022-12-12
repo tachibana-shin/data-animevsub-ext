@@ -3,3 +3,4 @@
 *.animevietsub.cc^$all
 *.animevietsub.co^$all
 *.animevietsub.to^$all
+*.animevietsub.me^$all
