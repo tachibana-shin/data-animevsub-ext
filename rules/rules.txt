@@ -4,3 +4,4 @@
 *.animevietsub.co^$all
 *.animevietsub.to^$all
 *.animevietsub.me^$all
+*.animevietsub.in^$all
