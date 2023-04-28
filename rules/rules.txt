@@ -5,3 +5,4 @@
 *.animevietsub.to^$all
 *.animevietsub.me^$all
 *.animevietsub.pro^$all
+*.animevietsub.in^$all
