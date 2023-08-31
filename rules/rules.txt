@@ -7,3 +7,4 @@
 *.animevietsub.pro^$all
 *.animevietsub.in^$all
 *.animevietsub.im^$all
+*.animevietsub.moe^$all
