@@ -1,0 +1,8 @@
+name: Ping to server update
+on: [push]
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Ping
+        run: curl 'https://animevietsub.us/auto-fetch.php' -X 'POST' -H 'HTTP_X_FROM_GITHUB_ACTIONS: true' 
