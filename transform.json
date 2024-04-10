@@ -1,10 +1,11 @@
 {
   "scheme": "https",
-  "host": "animevietsub.us",
+  "host": "animevietsub.de",
   "name": "AnimeVietsub",
   "old_host": [
     "animevietsub.tv",
     "animevietsub.cc",
+    "animevietsub.us",
     "animevietsub.io"
   ]
 }
